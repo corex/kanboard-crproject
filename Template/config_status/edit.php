@@ -1,0 +1,20 @@
+<?php
+$header = $values !== null ? 'Edit status' : 'New status';
+$isVisible = isset($values['is_visible']) ? $values['is_visible'] == 1 : false;
+?>
+<div class="page-header">
+    <h2><?= t($header) ?></h2>
+</div>
+<form method="post" action="<?= $this->url->href('ConfigStatusController', 'update', array('plugin' => 'CRProject')) ?>"
+      autocomplete="off">
+    <?= $this->form->csrf() ?>
+    <?= $this->form->hidden('id', $values) ?>
+    <?= $this->form->hidden('position', $values) ?>
+
+    <?= $this->form->label(t('Title'), 'title') ?>
+    <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="255"')) ?>
+
+    <?= $this->form->checkbox('is_visible', t('Is visible'), 1, $isVisible) ?>
+
+    <?= $this->modal->submitButtons() ?>
+</form>
