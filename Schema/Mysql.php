@@ -1,6 +1,6 @@
 <?php
 
-namespace Kanboard\Plugin\Timetable\Schema;
+namespace Kanboard\Plugin\CRProject\Schema;
 
 use PDO;
 
