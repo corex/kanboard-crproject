@@ -5,7 +5,7 @@ $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plu
     <div class="page-header">
         <h2><?= t('Project status') ?></h2>
     </div>
-    <table id="crtable" class="subtasks-table table-striped table-scrolling"
+    <table id="crtable" class="table-list subtasks-table table-striped table-scrolling"
            data-save-position-url="<?= $positionUrl ?>">
         <thead>
         <tr>
@@ -15,7 +15,7 @@ $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plu
         </thead>
         <tbody>
         <?php foreach ($statuses as $status): ?>
-            <tr data-subtask-id="<?= $status['id'] ?>">
+            <tr class="table-list-row" data-subtask-id="<?= $status['id'] ?>">
                 <td style="vertical-align: middle;">
                     <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change position') ?>"></i>&nbsp;
                     <?= $this->render('CRProject:config_status/menu', array(

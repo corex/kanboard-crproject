@@ -3,6 +3,7 @@
 namespace Kanboard\Plugin\CRProject;
 
 use Kanboard\Core\Plugin\Base;
+use Kanboard\Core\Translator;
 use Kanboard\Model\ProjectModel;
 use Kanboard\Model\TaskModel;
 use PicoDb\Table;
@@ -36,6 +37,14 @@ class Plugin extends Base
     }
 
     /**
+     * On startup.
+     */
+    public function onStartup()
+    {
+        Translator::load($this->languageModel->getCurrentLanguage(), __DIR__ . '/Locale');
+    }
+
+    /**
      * Get classes.
      *
      * @return array
@@ -60,6 +69,11 @@ class Plugin extends Base
         return basename(dirname(__FILE__));
     }
 
+    /**
+     * Get plugin description.
+     *
+     * @return string
+     */
     public function getPluginDescription()
     {
         return t('Project status and visibility.');

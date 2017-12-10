@@ -1,7 +1,7 @@
 <div class="page-header">
     <h2><?= t('Project status') ?></h2>
 </div>
-<table id="crtable" class="table-striped table-scrolling">
+<table id="crtable" class="table-list table-striped table-scrolling">
     <thead>
     <tr>
         <th class="column-75"><?= t('Project') ?></th>
@@ -15,14 +15,18 @@
         $projectId = $project['id'];
         $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
         ?>
-        <tr>
+        <tr class="table-list-row">
             <td class="column-75" style="vertical-align: middle;">
-                <?= $this->render('CRProject:project/menu', array(
+                <?= $this->render('CRProject:project/dropdown', array(
                     'id' => $project['id'],
                     'statuses' => $statuses,
-                    'projectStatus' => $projectStatus
+                    'projectStatus' => $projectStatus,
+                    'project' => $project
                 )) ?>
-                <?= $project['name'] ?> <?= $project['id'] ?>
+                <span class="table-list-title a">
+                    <?= $this->url->link($this->text->e($project['name']), 'BoardViewController', 'show',
+                        array('project_id' => $project['id'])) ?>
+                </span>
             </td>
             <td class="column-15" style="text-align: center; vertical-align: middle;">
                 <?php

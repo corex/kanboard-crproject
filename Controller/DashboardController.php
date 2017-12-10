@@ -3,6 +3,7 @@
 namespace Kanboard\Plugin\CRProject\Controller;
 
 use Kanboard\Controller\BaseController;
+use Kanboard\Model\ProjectModel;
 use Kanboard\Plugin\CRProject\Helper\Arr;
 
 class DashboardController extends BaseController
@@ -23,6 +24,7 @@ class DashboardController extends BaseController
         $user = $this->getUser();
         $userId = Arr::getInt($user, 'id');
         $query = $this->projectModel->getQueryColumnStats($this->projectPermissionModel->getActiveProjectIds($userId));
+        $query->asc(ProjectModel::TABLE . '.name');
         $projects = $query->findAll();
 
         $statuses = $this->projectStatusModel->getAll();
@@ -32,7 +34,7 @@ class DashboardController extends BaseController
             'projectStatuses' => $projectStatuses,
             'projects' => $projects,
             'statuses' => $statuses,
-            'title' => t('Project ') . ' &gt; ' . t('Status')
+            'title' => t('Project') . ' &gt; ' . t('Status')
         )));
     }
 

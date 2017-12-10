@@ -18,7 +18,7 @@ class ConfigStatusController extends BaseController
         $this->response->html($this->helper->layout->config('CRProject:config_status/show', array(
             'statuses' => $statuses,
             'statusIdsInUse' => $statusIdsInUse,
-            'title' => t('Settings') . ' &gt; ' . t('Extra')
+            'title' => t('Settings') . ' &gt; ' . t('Project status')
         )));
     }
 
@@ -59,16 +59,16 @@ class ConfigStatusController extends BaseController
         $title = trim(Arr::get($values, 'title'));
         if ($title == '') {
             return $this->form($values, array(
-                'title' => array(t('Title is required.'))
+                'title' => array(t('Title is required'))
             ));
         }
 
         $this->projectStatusModel->save($values);
 
         if ($id > 0) {
-            $this->flash->success(t('Status updated successfully.'));
+            $this->flash->success(t('Status updated'));
         } else {
-            $this->flash->success(t('Status created successfully.'));
+            $this->flash->success(t('Status created'));
         }
         return $this->response->redirect($this->helper->url->to('ConfigStatusController', 'show',
             array('plugin' => 'CRProject')));

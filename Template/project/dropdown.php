@@ -1,12 +1,12 @@
 <div class="dropdown">
     <a href="#" class="dropdown-menu dropdown-menu-link-icon">
-        <nobr><i class="fa fa-cog"></i><i class="fa fa-caret-down"></i></nobr>
+        <nobr><strong>#<?= $project['id'] ?> <i class="fa fa-caret-down"></i></strong></nobr>
     </a>
     <ul>
         <li>
             <?php
             $isHidden = $projectStatus !== null ? intval($projectStatus['is_hidden']) == 1 : false;
-            $title = $isHidden ? t('Unhide') : t('Hide');
+            $title = $isHidden ? t('Show') : t('Hide');
             $parameters = array('plugin' => 'CRProject', 'id' => $id, 'isHidden' => intval(!$isHidden));
             ?>
             <?= $this->url->icon('eye', t($title), 'DashboardController', 'visibility', $parameters) ?>

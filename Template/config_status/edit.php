@@ -1,5 +1,5 @@
 <?php
-$header = $values !== null ? 'Edit status' : 'New status';
+$header = count($values) > 0 ? 'Edit status' : 'New status';
 $isVisible = isset($values['is_visible']) ? $values['is_visible'] == 1 : false;
 ?>
 <div class="page-header">
@@ -14,7 +14,7 @@ $isVisible = isset($values['is_visible']) ? $values['is_visible'] == 1 : false;
     <?= $this->form->label(t('Title'), 'title') ?>
     <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="255"')) ?>
 
-    <?= $this->form->checkbox('is_visible', t('Is visible'), 1, $isVisible) ?>
+    <?= $this->form->checkbox('is_visible', t('Visible'), 1, $isVisible) ?>
 
     <?= $this->modal->submitButtons() ?>
 </form>
