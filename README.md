@@ -8,7 +8,7 @@ Author
 
 Requirements
 ------------
-- Kanboard >= 1.?.? (NOT RELEASED YET DO TO MISSING FUNCTIONALITY ON RELEASED VERSION)
+- Kanboard >= 1.1.1
 
 Installation
 ------------
