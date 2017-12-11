@@ -16,7 +16,7 @@ class DashboardController extends BaseController
      */
     public function show()
     {
-        $statusShowId = $this->request->getIntegerParam('status_show_id');
+        $statusShowId = $this->request->getStringParam('status_show_id', 0);
 
         // Get all project status ids by key.
         $projectStatuses = $this->projectHasStatusModel->getAllWithStatus();
@@ -50,7 +50,7 @@ class DashboardController extends BaseController
     public function visibility()
     {
         $id = $this->request->getIntegerParam('id');
-        $statusShowId = $this->request->getIntegerParam('status_show_id');
+        $statusShowId = $this->request->getStringParam('status_show_id', 0);
         $isHidden = $this->request->getIntegerParam('isHidden');
         $this->projectHasStatusModel->setVisibility($id, $isHidden);
         return $this->response->redirect($this->helper->url->to('DashboardController', 'show',
@@ -63,7 +63,7 @@ class DashboardController extends BaseController
     public function status()
     {
         $id = $this->request->getIntegerParam('id');
-        $statusShowId = $this->request->getIntegerParam('status_show_id');
+        $statusShowId = $this->request->getStringParam('status_show_id', 0);
         $statusId = $this->request->getIntegerParam('statusId');
         $this->projectHasStatusModel->setStatus($id, $statusId);
         return $this->response->redirect($this->helper->url->to('DashboardController', 'show',

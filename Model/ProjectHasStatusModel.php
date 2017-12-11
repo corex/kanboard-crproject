@@ -40,7 +40,7 @@ class ProjectHasStatusModel extends Base
     /**
      * Get project ids by status id.
      *
-     * @param integer $statusId If 0, then all.
+     * @param integer $statusId If 0, then all. If -1 then not set.
      * @return array
      */
     public function getProjectIdsByStatusId($statusId)
@@ -48,11 +48,22 @@ class ProjectHasStatusModel extends Base
         if ($statusId === null) {
             $statusId = 0;
         }
-        $query = $this->db->table(self::TABLE)->join(ProjectModel::TABLE, 'id', 'status_id');
+
+        $query = $this->db->table(ProjectModel::TABLE);
         if ($statusId > 0) {
+            // Get all on status id.
+            $query->join(ProjectHasStatusModel::TABLE, 'project_id', 'id');
             $query->eq(ProjectHasStatusModel::TABLE . '.status_id', $statusId);
+        } elseif ($statusId == -1) {
+            // Get all not set.
+            $query->left(ProjectHasStatusModel::TABLE, 'phs', 'project_id', ProjectModel::TABLE, 'id')
+                ->beginOr()
+                ->eq('phs.status_id', 0)
+                ->isNull('phs.status_id')
+                ->closeOr();
         }
-        $projects = $query->findAllByColumn(self::TABLE . '.project_id');
+
+        $projects = $query->findAllByColumn(ProjectModel::TABLE . '.id');
         return $projects;
     }
 
