@@ -16,6 +16,8 @@ class DashboardController extends BaseController
      */
     public function show()
     {
+        $statusShowId = $this->request->getIntegerParam('status_show_id');
+
         // Get all project status ids by key.
         $projectStatuses = $this->projectHasStatusModel->getAllWithStatus();
         $projectStatuses = Arr::toKey($projectStatuses, 'project_id');
@@ -29,11 +31,15 @@ class DashboardController extends BaseController
 
         $statuses = $this->projectStatusModel->getAll();
 
+        $projectIds = $this->projectHasStatusModel->getProjectIdsByStatusId($statusShowId);
+
         $this->response->html($this->helper->layout->dashboard('CRProject:project/show', array(
             'user' => $user,
             'projectStatuses' => $projectStatuses,
             'projects' => $projects,
             'statuses' => $statuses,
+            'projectIds' => $projectIds,
+            'statusShowId' => $statusShowId,
             'title' => t('Project') . ' &gt; ' . t('Status')
         )));
     }
@@ -44,10 +50,11 @@ class DashboardController extends BaseController
     public function visibility()
     {
         $id = $this->request->getIntegerParam('id');
+        $statusShowId = $this->request->getIntegerParam('status_show_id');
         $isHidden = $this->request->getIntegerParam('isHidden');
         $this->projectHasStatusModel->setVisibility($id, $isHidden);
         return $this->response->redirect($this->helper->url->to('DashboardController', 'show',
-            array('plugin' => 'CRProject')));
+            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)));
     }
 
     /**
@@ -56,9 +63,10 @@ class DashboardController extends BaseController
     public function status()
     {
         $id = $this->request->getIntegerParam('id');
+        $statusShowId = $this->request->getIntegerParam('status_show_id');
         $statusId = $this->request->getIntegerParam('statusId');
         $this->projectHasStatusModel->setStatus($id, $statusId);
         return $this->response->redirect($this->helper->url->to('DashboardController', 'show',
-            array('plugin' => 'CRProject')));
+            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)));
     }
 }

@@ -51,7 +51,7 @@ class ProjectStatusModel extends Base
      * @param array $values
      * @return integer
      */
-    public function save($values)
+    public function save(array $values)
     {
         // Extract id.
         $id = Arr::getInt($values, 'id');
@@ -60,6 +60,11 @@ class ProjectStatusModel extends Base
         // Prepare values.
         if (!Arr::has($values, 'is_visible')) {
             $values['is_visible'] = 0;
+        }
+
+        // Prepare color_id.
+        if (Arr::get($values, 'color_id') == '') {
+            $values['color_id'] = null;
         }
 
         // Make sure position is set.

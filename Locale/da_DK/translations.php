@@ -13,5 +13,6 @@ return array(
     'Status in use. Can not remove.' => 'Status er i brug. Kan ikke fjerne.',
     'Hidden' => 'Skjult',
     'Hide' => 'Skjul',
-    'Show' => 'Vis'
+    'Show' => 'Vis',
+    'All' => 'Alle'
 );

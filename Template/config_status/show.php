@@ -15,7 +15,7 @@ $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plu
         </thead>
         <tbody>
         <?php foreach ($statuses as $status): ?>
-            <tr class="table-list-row" data-subtask-id="<?= $status['id'] ?>">
+            <tr class="table-list-row <?= 'color-' . $status['color_id'] ?>" data-subtask-id="<?= $status['id'] ?>">
                 <td style="vertical-align: middle;">
                     <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change position') ?>"></i>&nbsp;
                     <?= $this->render('CRProject:config_status/menu', array(

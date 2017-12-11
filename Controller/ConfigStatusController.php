@@ -97,10 +97,11 @@ class ConfigStatusController extends BaseController
     {
         $id = $this->request->getIntegerParam('id');
         if ($this->projectHasStatusModel->inUse($id)) {
-            return $this->flash->failure(t('Status in use. Can not remove.'));
+            $this->flash->failure(t('Status in use. Can not remove.'));
+        } else {
+            $this->projectStatusModel->remove($id);
+            $this->flash->success('Status removed');
         }
-        $this->projectStatusModel->remove($id);
-        $this->flash->success('Status removed');
         $this->response->redirect($this->helper->url->to('ConfigStatusController', 'show',
             array('plugin' => 'CRProject')));
     }
@@ -113,9 +114,12 @@ class ConfigStatusController extends BaseController
      */
     private function form(array $values = array(), array $errors = array())
     {
+        $colors = $this->colorModel->getList();
+        $colors = array_merge(array('' => t('None')), $colors);
         $this->response->html($this->template->render('CRProject:config_status/edit', array(
             'values' => $values,
-            'errors' => $errors
+            'errors' => $errors,
+            'colors' => $colors
         )));
     }
 }

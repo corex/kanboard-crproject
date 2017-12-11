@@ -1,6 +1,17 @@
 <div class="page-header">
     <h2><?= t('Project status') ?></h2>
 </div>
+<div class="views-switcher-component">
+    <ul class="views">
+        <?php $classString = $statusShowId == 0 ? ' class="active"' : '' ?>
+        <li<?= $classString ?>> <?= $this->url->link(t('All'), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => 0)) ?> </li>
+        <?php foreach ($statuses as $status): ?>
+            <?php $classString = $statusShowId == $status['id'] ? ' class="active"' : '' ?>
+            <li<?= $classString ?>> <?= $this->url->link(t($status['title']), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => $status['id'])) ?> </li>
+        <?php endforeach ?>
+    </ul>
+</div>
+<br>
 <table id="crtable" class="table-list table-striped table-scrolling">
     <thead>
     <tr>
@@ -13,15 +24,20 @@
     <?php foreach ($projects as $project): ?>
         <?php
         $projectId = $project['id'];
+        if (!in_array($projectId, $projectIds)) {
+            continue;
+        }
         $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
+        $colorId = !empty($projectStatus['color_id']) ? $projectStatus['color_id'] : null;
         ?>
-        <tr class="table-list-row">
+        <tr class="table-list-row <?= $colorId !== null ? 'color-' . $colorId : '' ?>">
             <td class="column-75" style="vertical-align: middle;">
                 <?= $this->render('CRProject:project/dropdown', array(
                     'id' => $project['id'],
                     'statuses' => $statuses,
                     'projectStatus' => $projectStatus,
-                    'project' => $project
+                    'project' => $project,
+                    'statusShowId' => $statusShowId
                 )) ?>
                 <span class="table-list-title a">
                     <?= $this->url->link($this->text->e($project['name']), 'BoardViewController', 'show',

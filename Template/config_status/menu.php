@@ -6,12 +6,8 @@
                 array('plugin' => 'CRProject', 'id' => $id)) ?>
         </li>
         <li>
-            <?php if (!in_array($id, $statusIdsInUse)): ?>
-                <?= $this->modal->confirm('trash-o', t('Remove'), 'ConfigStatusController', 'confirm',
-                    array('plugin' => 'CRProject', 'id' => $id)) ?>
-            <?php else: ?>
-                <?= t('Status in use. Now allowed to remove.') ?>
-            <?php endif; ?>
+            <?= $this->modal->confirm('trash-o', t('Remove'), 'ConfigStatusController', 'confirm',
+                array('plugin' => 'CRProject', 'id' => $id)) ?>
         </li>
     </ul>
 </div>

@@ -7,13 +7,23 @@
             <?php
             $isHidden = $projectStatus !== null ? intval($projectStatus['is_hidden']) == 1 : false;
             $title = $isHidden ? t('Show') : t('Hide');
-            $parameters = array('plugin' => 'CRProject', 'id' => $id, 'isHidden' => intval(!$isHidden));
+            $parameters = array(
+                'plugin' => 'CRProject',
+                'id' => $id,
+                'isHidden' => intval(!$isHidden),
+                'status_show_id' => $statusShowId
+            );
             ?>
             <?= $this->url->icon('eye', t($title), 'DashboardController', 'visibility', $parameters) ?>
         </li>
         <li>
             <?php
-            $parameters = array('plugin' => 'CRProject', 'id' => $id, 'statusId' => 0);
+            $parameters = array(
+                'plugin' => 'CRProject',
+                'id' => $id,
+                'statusId' => 0,
+                'status_show_id' => $statusShowId
+            );
             ?>
             <?= $this->url->icon('folder', t('None'), 'DashboardController', 'status', $parameters) ?>
         </li>
@@ -25,7 +35,12 @@
             ?>
             <li>
                 <?php
-                $parameters = array('plugin' => 'CRProject', 'id' => $id, 'statusId' => $status['id']);
+                $parameters = array(
+                    'plugin' => 'CRProject',
+                    'id' => $id,
+                    'statusId' => $status['id'],
+                    'status_show_id' => $statusShowId
+                );
                 ?>
                 <?= $this->url->icon('folder', t($title), 'DashboardController', 'status', $parameters) ?>
             </li>

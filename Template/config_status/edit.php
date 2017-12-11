@@ -14,6 +14,9 @@ $isVisible = isset($values['is_visible']) ? $values['is_visible'] == 1 : false;
     <?= $this->form->label(t('Title'), 'title') ?>
     <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="255"')) ?>
 
+    <?= $this->form->label(t('Color'), 'color_id') ?>
+    <?= $this->form->select('color_id', $colors, $values, array(), array(), 'color-picker') ?>
+
     <?= $this->form->checkbox('is_visible', t('Visible'), 1, $isVisible) ?>
 
     <?= $this->modal->submitButtons() ?>

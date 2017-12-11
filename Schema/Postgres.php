@@ -12,7 +12,8 @@ function version_1(PDO $pdo)
         "id" SERIAL PRIMARY KEY,
         "title" VARCHAR(50) NOT NULL,
         "is_visible" INTEGER NOT NULL DEFAULT "1",
-        "position" INTEGER NOT NULL DEFAULT "0"
+        "position" INTEGER NOT NULL DEFAULT "0",
+        "color_id" VARCHAR(50) NULL
     )');
 
     $pdo->exec('CREATE TABLE IF NOT EXISTS crproject_has_status (

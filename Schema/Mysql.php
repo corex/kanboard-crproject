@@ -13,6 +13,7 @@ function version_1(PDO $pdo)
         title VARCHAR(50) NOT NULL,
         is_visible INT NOT NULL DEFAULT '1',
         position INT NOT NULL DEFAULT '0',
+        color_id VARCHAR(50) NULL,
         PRIMARY KEY(id)
     ) ENGINE=InnoDB CHARSET=utf8");
 

@@ -3,6 +3,7 @@
 namespace Kanboard\Plugin\CRProject\Model;
 
 use Kanboard\Core\Base;
+use Kanboard\Model\ProjectModel;
 
 class ProjectHasStatusModel extends Base
 {
@@ -34,6 +35,25 @@ class ProjectHasStatusModel extends Base
             ->closeOr()
             ->findAllByColumn(self::TABLE . '.project_id');
         return $hiddenProjects;
+    }
+
+    /**
+     * Get project ids by status id.
+     *
+     * @param integer $statusId If 0, then all.
+     * @return array
+     */
+    public function getProjectIdsByStatusId($statusId)
+    {
+        if ($statusId === null) {
+            $statusId = 0;
+        }
+        $query = $this->db->table(self::TABLE)->join(ProjectModel::TABLE, 'id', 'status_id');
+        if ($statusId > 0) {
+            $query->eq(ProjectHasStatusModel::TABLE . '.status_id', $statusId);
+        }
+        $projects = $query->findAllByColumn(self::TABLE . '.project_id');
+        return $projects;
     }
 
     /**
