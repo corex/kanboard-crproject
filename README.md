@@ -1,6 +1,15 @@
 Project status and visibility
 =============================
 
+Features
+--------
+- Add status to your project.
+- Add color to status.
+- Add visibility to status.
+- View projects by status.
+- Hide projects by status.
+- Hide individual projects.
+
 Author
 ------
 - CoRex
