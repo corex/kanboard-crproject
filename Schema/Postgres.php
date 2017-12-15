@@ -13,7 +13,8 @@ function version_1(PDO $pdo)
         "title" VARCHAR(50) NOT NULL,
         "is_visible" INTEGER NOT NULL DEFAULT "1",
         "position" INTEGER NOT NULL DEFAULT "0",
-        "color_id" VARCHAR(50) NULL
+        "color_id" VARCHAR(50) NULL,
+        "is_default" INTEGER NOT NULL DEFAULT "0"
     )');
 
     $pdo->exec('CREATE TABLE IF NOT EXISTS crproject_has_status (

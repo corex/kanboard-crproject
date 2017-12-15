@@ -14,6 +14,7 @@ function version_1(PDO $pdo)
         is_visible INT NOT NULL DEFAULT '1',
         position INT NOT NULL DEFAULT '0',
         color_id VARCHAR(50) NULL,
+        is_default INT NOT NULL DEFAULT '0',
         PRIMARY KEY(id)
     ) ENGINE=InnoDB CHARSET=utf8");
 
