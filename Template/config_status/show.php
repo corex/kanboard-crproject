@@ -9,8 +9,9 @@ $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plu
            data-save-position-url="<?= $positionUrl ?>">
         <thead>
         <tr>
-            <th class="column-90"><?= t('Title') ?></th>
+            <th class="column-80"><?= t('Title') ?></th>
             <th class="column-10" style="text-align: center;"><?= t('Visible') ?></th>
+            <th class="column-10" style="text-align: center;"><?= t('Default') ?></th>
         </tr>
         </thead>
         <tbody>
@@ -19,13 +20,17 @@ $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plu
                 <td style="vertical-align: middle;">
                     <i class="fa fa-arrows-alt draggable-row-handle" title="<?= t('Change position') ?>"></i>&nbsp;
                     <?= $this->render('CRProject:config_status/menu', array(
-                        'id' => $status['id'],
+                        'status' => $status,
                         'statusIdsInUse' => $statusIdsInUse
                     )) ?>
                     <?= $status['title'] ?>
                 </td>
-                <td class="column-10"
-                    style="text-align: center; vertical-align: middle;"><?= $status['is_visible'] == 1 ? t('Yes') : t('No') ?></td>
+                <td class="column-10" style="text-align: center; vertical-align: middle;">
+                    <?= $status['is_visible'] == 1 ? t('Yes') : t('No') ?>
+                </td>
+                <td class="column-10" style="text-align: center; vertical-align: middle;">
+                    <?= $status['is_default'] == 1 ? t('Yes') : t('No') ?>
+                </td>
             </tr>
         <?php endforeach ?>
         </tbody>

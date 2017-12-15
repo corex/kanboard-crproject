@@ -16,7 +16,7 @@ class DashboardController extends BaseController
      */
     public function show()
     {
-        $statusShowId = $this->request->getStringParam('status_show_id', 0);
+        $statusShowId = $this->request->getStringParam('status_show_id', $this->projectStatusModel->getDefaultId());
 
         // Get all project status ids by key.
         $projectStatuses = $this->projectHasStatusModel->getAllWithStatus();
@@ -33,6 +33,8 @@ class DashboardController extends BaseController
 
         $projectIds = $this->projectHasStatusModel->getProjectIdsByStatusId($statusShowId);
 
+        $defaultId = $this->projectStatusModel->getDefaultId();
+
         $this->response->html($this->helper->layout->dashboard('CRProject:project/show', array(
             'user' => $user,
             'projectStatuses' => $projectStatuses,
@@ -40,6 +42,7 @@ class DashboardController extends BaseController
             'statuses' => $statuses,
             'projectIds' => $projectIds,
             'statusShowId' => $statusShowId,
+            'defaultId' => $defaultId,
             'title' => t('Project') . ' &gt; ' . t('Status')
         )));
     }

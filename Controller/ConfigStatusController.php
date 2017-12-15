@@ -91,6 +91,18 @@ class ConfigStatusController extends BaseController
     }
 
     /**
+     * Set default.
+     */
+    public function setDefault()
+    {
+        $id = $this->request->getIntegerParam('id');
+        $isDefault = $this->request->getIntegerParam('is_default');
+        $this->projectStatusModel->setDefault($id, $isDefault);
+        return $this->response->redirect($this->helper->url->to('ConfigStatusController', 'show',
+            array('plugin' => 'CRProject')));
+    }
+
+    /**
      * Remove.
      */
     public function remove()

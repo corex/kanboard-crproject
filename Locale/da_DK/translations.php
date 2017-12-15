@@ -14,5 +14,8 @@ return array(
     'Hidden' => 'Skjult',
     'Hide' => 'Skjul',
     'Show' => 'Vis',
-    'All' => 'Alle'
+    'All' => 'Alle',
+	'Default' => 'Standard',
+	'Set default' => 'Sæt standard',
+    'Remove default' => 'Fjern standard'
 );

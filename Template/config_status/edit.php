@@ -1,6 +1,7 @@
 <?php
 $header = count($values) > 0 ? 'Edit status' : 'New status';
 $isVisible = isset($values['is_visible']) ? $values['is_visible'] == 1 : false;
+$isDefault = isset($values['is_default']) ? $values['is_default'] == 1 : false;
 ?>
 <div class="page-header">
     <h2><?= t($header) ?></h2>
@@ -10,6 +11,7 @@ $isVisible = isset($values['is_visible']) ? $values['is_visible'] == 1 : false;
     <?= $this->form->csrf() ?>
     <?= $this->form->hidden('id', $values) ?>
     <?= $this->form->hidden('position', $values) ?>
+    <?= $this->form->hidden('is_default', $values) ?>
 
     <?= $this->form->label(t('Title'), 'title') ?>
     <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="255"')) ?>

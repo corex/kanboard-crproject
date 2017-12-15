@@ -1,18 +1,17 @@
 <div class="page-header">
     <h2><?= t('Project status') ?></h2>
 </div>
-
 <div class="views-switcher-component">
     <ul class="views">
-        <?php $classString = $statusShowId == 0 ? ' class="active"' : '' ?>
-        <li<?= $classString ?>> <?= $this->url->link(t('All'), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => 0)) ?> </li>
-
         <?php foreach ($statuses as $status): ?>
             <?php $classString = $statusShowId == $status['id'] ? ' class="active"' : '' ?>
             <li<?= $classString ?>> <?= $this->url->link(t($status['title']), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => $status['id'])) ?> </li>
         <?php endforeach ?>
 
-        <?php $classString = $statusShowId === null ? ' class="active"' : '' ?>
+        <?php $classString = $statusShowId == 0 ? ' class="active"' : '' ?>
+        <li<?= $classString ?>> <?= $this->url->link(t('All'), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => 0)) ?> </li>
+
+        <?php $classString = $statusShowId == -1 ? ' class="active"' : '' ?>
         <li<?= $classString ?>> <?= $this->url->link(t('None'), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => -1)) ?> </li>
     </ul>
 </div>
