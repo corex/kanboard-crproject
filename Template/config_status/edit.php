@@ -14,7 +14,10 @@ $isDefault = isset($values['is_default']) ? $values['is_default'] == 1 : false;
     <?= $this->form->hidden('is_default', $values) ?>
 
     <?= $this->form->label(t('Title'), 'title') ?>
-    <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="255"')) ?>
+    <?= $this->form->text('title', $values, $errors, array('autofocus', 'required', 'maxlength="50"')) ?>
+
+    <?= $this->form->label(t('Description'), 'description') ?>
+    <?= $this->form->text('description', $values, $errors, array('maxlength="200"')) ?>
 
     <?= $this->form->label(t('Color'), 'color_id') ?>
     <?= $this->form->select('color_id', $colors, $values, array(), array(), 'color-picker') ?>

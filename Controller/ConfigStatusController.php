@@ -63,6 +63,12 @@ class ConfigStatusController extends BaseController
             ));
         }
 
+        // Set description to NULL if ''.
+        $description = Arr::get($values, 'description');
+        if (trim($description) == '') {
+            $values['description'] = null;
+        }
+
         $this->projectStatusModel->save($values);
 
         if ($id > 0) {

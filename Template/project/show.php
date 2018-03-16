@@ -1,11 +1,18 @@
+<?php $statusDescription = null; ?>
 <div class="page-header">
     <h2><?= t('Project status') ?></h2>
 </div>
 <div class="views-switcher-component">
     <ul class="views">
         <?php foreach ($statuses as $status): ?>
+            <?php
+            if ($statusShowId == $status['id']) {
+                $statusDescription = $status['description'];
+            }
+            ?>
             <?php $classString = $statusShowId == $status['id'] ? ' class="active"' : '' ?>
-            <li<?= $classString ?>> <?= $this->url->link(t($status['title']), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => $status['id'])) ?> </li>
+            <?php $titleString = $status['description'] !== null ? ' title="' . $status['description'] . '"' : '' ?>
+            <li<?= $classString ?><?= $titleString ?>> <?= $this->url->link(t($status['title']), 'DashboardController', 'show', array('plugin' => 'CRProject', 'status_show_id' => $status['id']), false, '', $status['description']) ?> </li>
         <?php endforeach ?>
 
         <?php $classString = $statusShowId == 0 ? ' class="active"' : '' ?>
@@ -16,6 +23,10 @@
     </ul>
 </div>
 <br>
+
+<?php if ($statusDescription !== null): ?>
+<strong><?= $statusDescription ?></strong><br><br>
+<?php endif; ?>
 
 <table id="crtable" class="table-list table-striped table-scrolling">
     <thead>
