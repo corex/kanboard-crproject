@@ -68,6 +68,36 @@ class ProjectHasStatusModel extends Base
     }
 
     /**
+     * Get project ids by status ids for lookup.
+     *
+     * @return array
+     */
+    public function getProjectIdsByStatusIds()
+    {
+        $query = $this->db->table(ProjectModel::TABLE);
+        $query->join(ProjectHasStatusModel::TABLE, 'project_id', 'id');
+        $projects = $query->findAll();
+
+        // Compile result ids for lookup.
+        $result = [];
+        if (count($projects) > 0) {
+            foreach ($projects as $project) {
+                $status_id = $project['status_id'];
+                $project_id = $project['project_id'];
+                if ($status_id === null || $project_id === null) {
+                    continue;
+                }
+                if (!isset($result[$status_id]) && !is_array($result[$status_id])) {
+                    $result[$status_id] = [];
+                }
+                $result[$status_id][] = $project_id;
+            }
+        }
+
+        return $result;
+    }
+
+    /**
      * Set status.
      *
      * @param integer $projectId
