@@ -32,7 +32,7 @@ class DashboardController extends BaseController
         $statuses = $this->projectStatusModel->getAll();
 
         $projectIds = $this->projectHasStatusModel->getProjectIdsByStatusId($statusShowId);
-        $projectIdsByStatusIds = $this->projectHasStatusModel->getProjectIdsByStatusIds($statusShowId);
+        $projectIdsByStatusIds = $this->projectHasStatusModel->getProjectIdsByStatusIds(false);
 
         $defaultId = $this->projectStatusModel->getDefaultId();
 

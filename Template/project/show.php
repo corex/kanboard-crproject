@@ -9,7 +9,7 @@
                 array('plugin' => 'CRProject')) ?> </li>
 
         <?php $classString = $statusShowId == -1 ? ' class="active"' : '' ?>
-        <li<?= $classString ?>> <?= $this->url->link(t('Show projects with no status'), 'DashboardController', 'show',
+        <li<?= $classString ?>> <?= $this->url->link(t('Show projects with no status or hidden'), 'DashboardController', 'show',
                 array('plugin' => 'CRProject', 'status_show_id' => -1)) ?> </li>
     </ul>
 </div>
@@ -20,7 +20,6 @@
     <?php if ($statusDescription !== null): ?>
         <strong><?= $statusDescription ?></strong><br><br>
     <?php endif; ?>
-
     <table id="crtable" class="table-list table-striped table-scrolling">
         <thead>
         <tr>
@@ -33,9 +32,12 @@
         <?php foreach ($projects as $project): ?>
             <?php
             $projectId = $project['id'];
-            if (!in_array($projectId, $projectIds)) {
+
+            $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
+            if (!in_array($projectId, $projectIds) && intval($projectStatus['is_hidden']) == 0) {
                 continue;
             }
+
             $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
             $colorId = !empty($projectStatus['color_id']) ? $projectStatus['color_id'] : null;
             ?>
@@ -135,7 +137,6 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                                         'show',
                                         array('project_id' => $project['id'])) ?>
                                 </span>
-                                <?= isset($projectStatuses[$projectId]) && $projectStatuses[$projectId]['is_hidden'] ? '' : $iconEye ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

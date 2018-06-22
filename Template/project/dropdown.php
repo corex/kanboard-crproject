@@ -17,6 +17,9 @@
             <?= $this->url->icon('eye', t($title), 'DashboardController', 'visibility', $parameters) ?>
         </li>
         <li>
+            <?= $this->url->icon('cog', t('Edit project'), 'ProjectEditController', 'show', array('project_id' => $project['id'])) ?>
+        </li>
+        <li>
             <?php
             $parameters = array(
                 'plugin' => 'CRProject',
@@ -25,13 +28,13 @@
                 'status_show_id' => $statusShowId
             );
             ?>
-            <?= $this->url->icon('folder', t('None'), 'DashboardController', 'status', $parameters) ?>
+            <?= $this->url->icon('folder', t('Status: None'), 'DashboardController', 'status', $parameters) ?>
         </li>
         <?php foreach ($statuses as $status): ?>
             <?php
             $title = $status['title'];
             $isVisible = $status['is_visible'] == 1;
-            $title .= ' (' . ($isVisible ? t('Visible') : t('Hidden')) . ')';
+//            $title .= ' (' . ($isVisible ? t('Visible') : t('Hidden')) . ')';
             ?>
             <li>
                 <?php
@@ -42,7 +45,7 @@
                     'status_show_id' => $statusShowId
                 );
                 ?>
-                <?= $this->url->icon('folder', t($title), 'DashboardController', 'status', $parameters) ?>
+                <?= $this->url->icon('folder', t('Status') . ': ' . t($title), 'DashboardController', 'status', $parameters) ?>
             </li>
         <?php endforeach; ?>
     </ul>

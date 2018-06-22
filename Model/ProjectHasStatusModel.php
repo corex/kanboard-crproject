@@ -70,9 +70,10 @@ class ProjectHasStatusModel extends Base
     /**
      * Get project ids by status ids for lookup.
      *
+     * @param boolean $includeHidden
      * @return array
      */
-    public function getProjectIdsByStatusIds()
+    public function getProjectIdsByStatusIds($includeHidden)
     {
         $query = $this->db->table(ProjectModel::TABLE);
         $query->join(ProjectHasStatusModel::TABLE, 'project_id', 'id');
@@ -82,15 +83,19 @@ class ProjectHasStatusModel extends Base
         $result = [];
         if (count($projects) > 0) {
             foreach ($projects as $project) {
-                $status_id = $project['status_id'];
-                $project_id = $project['project_id'];
-                if ($status_id === null || $project_id === null) {
+                $statusId = $project['status_id'];
+                $projectId = $project['project_id'];
+                $isHidden = intval($project['is_hidden']) == 1;
+                if (!$includeHidden && $isHidden) {
                     continue;
                 }
-                if (!isset($result[$status_id]) && !is_array($result[$status_id])) {
-                    $result[$status_id] = [];
+                if ($statusId === null || $projectId === null) {
+                    continue;
                 }
-                $result[$status_id][] = $project_id;
+                if (!isset($result[$statusId]) && !is_array($result[$statusId])) {
+                    $result[$statusId] = [];
+                }
+                $result[$statusId][] = $projectId;
             }
         }
 

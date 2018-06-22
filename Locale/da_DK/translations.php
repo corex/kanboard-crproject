@@ -1,6 +1,7 @@
 <?php
 
 return array(
+    'Project status' => 'Projekt status',
     'Project board' => 'Projekt tavle',
     'Visible' => 'Synlig',
     'Add new status' => 'Tilføj ny status',
@@ -18,5 +19,6 @@ return array(
 	'Default' => 'Standard',
 	'Set default' => 'Sæt standard',
     'Remove default' => 'Fjern standard',
-    'Show projects with no status' => 'Vis projekter uden status'
+    'Show projects with no status or hidden' => 'Vis projekter uden status eller skjult',
+    'Edit project' => 'Ret projekt'
 );

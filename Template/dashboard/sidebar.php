@@ -1,4 +1,4 @@
-<li <?= $this->app->checkMenuSelection('ConfigStatusController', 'show', 'CRProject') ?>>
+<li>
     <?= $this->url->link(t('Project status'), 'ConfigStatusController', 'show', ['plugin' => 'CRProject']) ?>
 </li>
 <li>

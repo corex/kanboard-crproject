@@ -18,7 +18,9 @@ class Plugin extends Base
     public function initialize()
     {
         $this->template->hook->attach('template:dashboard:page-header:menu', 'CRProject:dashboard/menu');
+        $this->template->hook->attach('template:project-header:view-switcher', 'CRProject:dashboard/menu');
         $this->template->hook->attach('template:config:sidebar', 'CRProject:config/sidebar');
+        $this->template->hook->attach('template:dashboard:sidebar', 'CRProject:dashboard/sidebar');
 
         // Remove all hidden projects on dashboard.
         $hiddenProjectIds = $this->projectHasStatusModel->getAllHiddenProjectsIds();
