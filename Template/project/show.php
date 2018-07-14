@@ -9,8 +9,14 @@
                 array('plugin' => 'CRProject')) ?> </li>
 
         <?php $classString = $statusShowId == -1 ? ' class="active"' : '' ?>
-        <li<?= $classString ?>> <?= $this->url->link(t('Show projects with no status or hidden'), 'DashboardController', 'show',
-                array('plugin' => 'CRProject', 'status_show_id' => -1)) ?> </li>
+        <li<?= $classString ?>>
+            <?= $this->url->link(
+                t('Show projects with no status or hidden'),
+                'DashboardController',
+                'show',
+                array('plugin' => 'CRProject', 'status_show_id' => -1)
+            ) ?>
+        </li>
     </ul>
 </div>
 <br>
@@ -51,8 +57,12 @@
                         'statusShowId' => $statusShowId
                     )) ?>
                     <span class="table-list-title a">
-                        <?= $this->url->link($this->text->e($project['name']), 'BoardViewController', 'show',
-                            array('project_id' => $project['id'])) ?>
+                        <?= $this->url->link(
+                            $this->text->e($project['name']),
+                            'BoardViewController',
+                            'show',
+                            array('project_id' => $project['id'])
+                        ) ?>
                     </span>
                 </td>
                 <td class="column-15" style="text-align: center; vertical-align: middle;">
@@ -133,9 +143,15 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                             <!-- Show title. -->
                             <td style="border: 0;">
                                 <span class="table-list-title a">
-                                    <?= $this->url->link($this->text->e($project['name']), 'BoardViewController',
+                                    <?= $this->url->link(
+                                        $this->text->e($project['name']),
+                                        'BoardViewController',
                                         'show',
-                                        array('project_id' => $project['id'])) ?>
+                                        array('project_id' => $project['id']),
+                                        false,
+                                        '',
+                                        $project['description']
+                                    ) ?>
                                 </span>
                             </td>
                         </tr>
