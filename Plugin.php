@@ -6,6 +6,7 @@ use Kanboard\Core\Plugin\Base;
 use Kanboard\Core\Translator;
 use Kanboard\Model\ProjectModel;
 use Kanboard\Model\TaskModel;
+use Kanboard\Plugin\CRProject\Helper\Factory;
 use PicoDb\Table;
 
 class Plugin extends Base
@@ -17,10 +18,16 @@ class Plugin extends Base
      */
     public function initialize()
     {
+        $colors = $this->configTaskColorModel->getOptions();
+
+        // Setup templates.
         $this->template->hook->attach('template:dashboard:page-header:menu', 'CRProject:dashboard/menu');
         $this->template->hook->attach('template:project-header:view-switcher', 'CRProject:dashboard/menu');
         $this->template->hook->attach('template:config:sidebar', 'CRProject:config/sidebar');
         $this->template->hook->attach('template:dashboard:sidebar', 'CRProject:dashboard/sidebar');
+        $this->template->hook->attach('template:project:header:after', 'CRProject:dashboard/colors', array(
+            'colors' => $colors
+        ));
 
         // Remove all hidden projects on dashboard.
         $hiddenProjectIds = $this->projectHasStatusModel->getAllHiddenProjectsIds();
@@ -36,6 +43,16 @@ class Plugin extends Base
         $this->hook->on('model:subtask:count:query', function (Table &$query) use ($hiddenProjectIds) {
             $query->notIn(TaskModel::TABLE . '.project_id', $hiddenProjectIds);
         });
+
+        // Modify list of colors.
+        $this->hook->on('model:color:get-list', function (&$listing) use ($colors) {
+            if (count($colors) == 0) {
+                return;
+            }
+            if ($this->request->getStringParam('controller') == 'TaskModificationController') {
+                $listing = $colors;
+            }
+        });
     }
 
     /**
@@ -43,6 +60,7 @@ class Plugin extends Base
      */
     public function onStartup()
     {
+        Factory::setContainer($this->container);
         Translator::load($this->languageModel->getCurrentLanguage(), __DIR__ . '/Locale');
     }
 
@@ -56,8 +74,9 @@ class Plugin extends Base
         return array(
             'Plugin\CRProject\Model' => array(
                 'ProjectStatusModel',
-                'ProjectHasStatusModel'
-            )
+                'ProjectHasStatusModel',
+                'ConfigTaskColorModel'
+            ),
         );
     }
 

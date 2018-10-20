@@ -92,7 +92,7 @@ class ProjectHasStatusModel extends Base
                 if ($statusId === null || $projectId === null) {
                     continue;
                 }
-                if (!isset($result[$statusId]) && !is_array($result[$statusId])) {
+                if (array_key_exists($statusId, $result) && !isset($result[$statusId]) && !is_array($result[$statusId])) {
                     $result[$statusId] = [];
                 }
                 $result[$statusId][] = $projectId;

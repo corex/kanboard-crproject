@@ -1,4 +1,7 @@
-<?php $statusDescription = null; ?>
+<?php
+$statusDescription = null;
+$colorHelper = \Kanboard\Plugin\CRProject\Helper\Factory::colorHelper();
+?>
 <div class="page-header">
     <h2><?= t('Project board') ?></h2>
 </div>
@@ -99,7 +102,14 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
     <!-- Show all status headers. -->
     <tr>
         <?php foreach ($statuses as $status): ?>
-            <th style="padding: 5px 5px 5px 5px;">
+
+            <?php
+            $colorId = $status['color_id'];
+            $backgroundColor = $colorHelper->background($colorId);
+            $borderColor = $colorHelper->border($colorId);
+            ?>
+
+            <th style="padding: 5px 5px 5px 5px; background-color: <?= $backgroundColor ?>; border-color: <?= $borderColor ?>">
                 <?= $status['title'] ?>
                 <i class="fa fa-info-circle" style="color: gray;" title="<?= $status['description'] ?>"></i>
             </th>
@@ -115,7 +125,6 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                     <?php foreach ($projects as $project): ?>
                         <tr>
                             <?php
-
                             // Validate status id.
                             $statusId = $status['id'];
                             if (!isset($projectIdsByStatusIds[$statusId])) {
@@ -127,6 +136,9 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                             if (!in_array($projectId, $projectIdsByStatusIds[$statusId])) {
                                 continue;
                             }
+
+                            // Get project status.
+                            $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
                             ?>
 
                             <!-- Show dropdown. -->

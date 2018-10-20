@@ -1,6 +1,7 @@
 <?php
 // We are cheating here and use "subtask" functionality (subtasks-table) to drag/drop.
 $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plugin' => 'CRProject'));
+$widgetHelper = \Kanboard\Plugin\CRProject\Helper\Factory::widgetHelper();
 ?>
     <div class="page-header">
         <h2><?= t('Project status') ?></h2>
@@ -24,7 +25,7 @@ $positionUrl = $this->url->href('ConfigStatusController', 'position', array('plu
                         'status' => $status,
                         'statusIdsInUse' => $statusIdsInUse
                     )) ?>
-                    <?= $status['title'] ?>
+                    <?= $widgetHelper->label($status['color_id'], $status['title']) ?>
                 </td>
                 <td class="column-60" style="text-align: left; vertical-align: middle;">
                     <?= $status['description'] ?>

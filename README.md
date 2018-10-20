@@ -9,6 +9,8 @@ Features
 - View projects by status.
 - Hide projects by status.
 - Hide individual projects.
+- Change title of task colors.
+- Limit task colors.
 
 Author
 ------

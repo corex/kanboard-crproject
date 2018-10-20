@@ -2,6 +2,7 @@
 
 return array(
     'Project status' => 'Projekt status',
+    'Project task color' => 'Projekt opgave farve',
     'Project board' => 'Projekt tavle',
     'Visible' => 'Synlig',
     'Add new status' => 'Tilføj ny status',
@@ -20,5 +21,7 @@ return array(
 	'Set default' => 'Sæt standard',
     'Remove default' => 'Fjern standard',
     'Show projects with no status or hidden' => 'Vis projekter uden status eller skjult',
-    'Edit project' => 'Ret projekt'
+    'Edit project' => 'Ret projekt',
+    'Task colors' => 'Opgave farver',
+    'Add new task color' => 'Ny opgave farve'
 );
