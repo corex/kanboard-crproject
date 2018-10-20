@@ -1,7 +1,10 @@
 <?php
+
+use Kanboard\Plugin\CRProject\Helper\Factory;
+
 $header = count($values) > 0 ? 'Edit task color' : 'New task color';
 $id = isset($values['id']) ? intval($values['id']) : 0;
-$colorHelper = \Kanboard\Plugin\CRProject\Helper\Factory::colorHelper();
+$colorHelper = Factory::colorHelper();
 ?>
 <div class="page-header">
     <h2><?= t($header) ?></h2>

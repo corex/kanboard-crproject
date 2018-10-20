@@ -2,7 +2,6 @@
 
 namespace Kanboard\Plugin\CRProject\Helper;
 
-use Kanboard\Core\Http\Request;
 use Kanboard\Model\ColorModel;
 use Pimple\Container;
 
@@ -29,13 +28,12 @@ class Factory
     /**
      * Request.
      *
-     * @return Request
+     * @return Request|object
      * @throws \Exception
      */
     public static function request()
     {
-        $container = self::container();
-        return $container['request'];
+        return self::instance(Request::class);
     }
 
     /**

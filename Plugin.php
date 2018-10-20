@@ -49,10 +49,16 @@ class Plugin extends Base
             if (count($colors) == 0) {
                 return;
             }
-            if ($this->request->getStringParam('controller') == 'TaskModificationController') {
+            if (Factory::request()->controller() == 'TaskModificationController') {
                 $listing = $colors;
             }
         });
+
+        // Setup routes.
+        $this->route->addRoute('/crproject/dashboard', 'DashboardController', 'show', 'CRProject');
+        $this->route->addRoute('/crproject/dashboard/:status_show_id', 'DashboardController', 'show', 'CRProject');
+        $this->route->addRoute('/crproject/status', 'ConfigStatusController', 'show', 'CRProject');
+        $this->route->addRoute('/crproject/task/color', 'ConfigTaskColorController', 'show', 'CRProject');
     }
 
     /**

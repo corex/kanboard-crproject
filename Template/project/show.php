@@ -1,6 +1,9 @@
 <?php
+
+use Kanboard\Plugin\CRProject\Helper\Factory;
+
 $statusDescription = null;
-$colorHelper = \Kanboard\Plugin\CRProject\Helper\Factory::colorHelper();
+$colorHelper = Factory::colorHelper();
 ?>
 <div class="page-header">
     <h2><?= t('Project board') ?></h2>

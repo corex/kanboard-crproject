@@ -1,8 +1,11 @@
 <?php
-$widgetHelper = \Kanboard\Plugin\CRProject\Helper\Factory::widgetHelper();
-$request = \Kanboard\Plugin\CRProject\Helper\Factory::request();
+
+use Kanboard\Plugin\CRProject\Helper\Factory;
+
+$widgetHelper = Factory::widgetHelper();
+$request = Factory::request();
 ?>
-<?php if ($request->getStringParam('controller') == 'BoardViewController' && count($colors) > 0): ?>
+<?php if (in_array($request->controller(), ['BoardViewController']) && count($colors) > 0): ?>
     <div style="padding: 15px 5px 10px 0px;">
         <?= t('Task colors') ?>:
         <?php
