@@ -14,8 +14,7 @@ function version_1(PDO $pdo)
         "description" VARCHAR(200),
         "is_visible" INTEGER NOT NULL DEFAULT "1",
         "position" INTEGER NOT NULL DEFAULT "0",
-        "color_id" VARCHAR(50) NULL,
-        "is_default" INTEGER NOT NULL DEFAULT "0"
+        "color_id" VARCHAR(50) NULL
     )');
 
     $pdo->exec('CREATE TABLE IF NOT EXISTS crproject_has_status (
@@ -24,11 +23,4 @@ function version_1(PDO $pdo)
         "status_id" INTEGER NOT NULL DEFAULT "0",
         "is_hidden" INTEGER NOT NULL DEFAULT "0"
     )');
-
-    $pdo->exec('CREATE TABLE IF NOT EXISTS crproject_task_color (
-        "id" SERIAL PRIMARY KEY,
-        "color_id" VARCHAR(50) NOT NULL,
-        "title" VARCHAR(50) NOT NULL,
-        "position" INTEGER NOT NULL
-    ) ENGINE=InnoDB CHARSET=utf8');
 }

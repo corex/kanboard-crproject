@@ -67,11 +67,6 @@ class ProjectStatusModel extends Base
             $values['color_id'] = null;
         }
 
-        // Prepare values.
-        if (!Arr::has($values, 'is_default') || empty($values['is_default'])) {
-            $values['is_default'] = 0;
-        }
-
         // Make sure position is set.
         if (Arr::getInt($values, 'position') == 0) {
             $maxPosition = intval($this->db->table(self::TABLE)->desc('position')->findOneColumn('position'));
@@ -125,27 +120,5 @@ class ProjectStatusModel extends Base
             $offset++;
         }
         return !in_array(false, $results, true);
-    }
-
-    /**
-     * Set default.
-     *
-     * @param integer $id
-     * @param integer $isDefault
-     */
-    public function setDefault($id, $isDefault)
-    {
-        $this->db->table(self::TABLE)->update(array('is_default' => 0));
-        $this->db->table(self::TABLE)->eq('id', $id)->update(array('is_default' => $isDefault));
-    }
-
-    /**
-     * Get default id.
-     *
-     * @return integer
-     */
-    public function getDefaultId()
-    {
-        return intval($this->db->table(self::TABLE)->eq('is_default', 1)->findOneColumn('id'));
     }
 }

@@ -14,8 +14,7 @@ function version_1(PDO $pdo)
         description VARCHAR(200),
         is_visible INT NOT NULL DEFAULT '1',
         position INT NOT NULL DEFAULT '0',
-        color_id VARCHAR(50) NULL,
-        is_default INT NOT NULL DEFAULT '0',
+        color_id VARCHAR(50) NULL
         PRIMARY KEY(id)
     ) ENGINE=InnoDB CHARSET=utf8");
 
@@ -24,14 +23,6 @@ function version_1(PDO $pdo)
         project_id INTEGER NOT NULL,
         status_id INT NOT NULL DEFAULT '0',
         is_hidden INT NOT NULL DEFAULT '0',
-        PRIMARY KEY(id)
-    ) ENGINE=InnoDB CHARSET=utf8");
-
-    $pdo->exec("CREATE TABLE IF NOT EXISTS crproject_task_color (
-        id INT NOT NULL AUTO_INCREMENT,
-        color_id VARCHAR(50) NOT NULL,
-        title VARCHAR(50) NOT NULL,
-        position INT NOT NULL,
         PRIMARY KEY(id)
     ) ENGINE=InnoDB CHARSET=utf8");
 }

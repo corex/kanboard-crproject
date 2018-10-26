@@ -16,7 +16,12 @@ class DashboardController extends BaseController
      */
     public function show()
     {
-        $statusShowId = $this->request->getStringParam('status_show_id', $this->projectStatusModel->getDefaultId());
+        $columnCounterMax = $this->configModel->get('crproject_column_count');
+        if (intval($columnCounterMax) < 1) {
+            $columnCounterMax = 1;
+        }
+
+        $statusShowId = $this->request->getStringParam('status_show_id', 0);
 
         // Get all project status ids by key.
         $projectStatuses = $this->projectHasStatusModel->getAllWithStatus();
@@ -34,9 +39,7 @@ class DashboardController extends BaseController
         $projectIds = $this->projectHasStatusModel->getProjectIdsByStatusId($statusShowId);
         $projectIdsByStatusIds = $this->projectHasStatusModel->getProjectIdsByStatusIds(false);
 
-        $defaultId = $this->projectStatusModel->getDefaultId();
-
-        $this->response->html($this->helper->layout->dashboard('CRProject:project/show', array(
+        $this->response->html($this->helper->layout->dashboard('CRProject:dashboard/show', array(
             'user' => $user,
             'projectStatuses' => $projectStatuses,
             'projects' => $projects,
@@ -44,8 +47,8 @@ class DashboardController extends BaseController
             'projectIds' => $projectIds,
             'projectIdsByStatusIds' => $projectIdsByStatusIds,
             'statusShowId' => $statusShowId,
-            'defaultId' => $defaultId,
-            'title' => t('Project') . ' &gt; ' . t('Status')
+            'title' => t('Project') . ' &gt; ' . t('Status'),
+            'columnCounterMax' => $columnCounterMax
         )));
     }
 

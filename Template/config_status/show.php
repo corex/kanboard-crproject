@@ -14,9 +14,8 @@ $widgetHelper = Factory::widgetHelper();
         <thead>
         <tr>
             <th class="column-20"><?= t('Title') ?></th>
-            <th class="column-60"><?= t('Description') ?></th>
+            <th class="column-70"><?= t('Description') ?></th>
             <th class="column-10" style="text-align: center;"><?= t('Visible') ?></th>
-            <th class="column-10" style="text-align: center;"><?= t('Default') ?></th>
         </tr>
         </thead>
         <tbody>
@@ -35,9 +34,6 @@ $widgetHelper = Factory::widgetHelper();
                 </td>
                 <td class="column-10" style="text-align: center; vertical-align: middle;">
                     <?= $status['is_visible'] == 1 ? t('Yes') : t('No') ?>
-                </td>
-                <td class="column-10" style="text-align: center; vertical-align: middle;">
-                    <?= $status['is_default'] == 1 ? t('Yes') : t('No') ?>
                 </td>
             </tr>
         <?php endforeach ?>

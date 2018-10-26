@@ -34,7 +34,6 @@
             <?php
             $title = $status['title'];
             $isVisible = $status['is_visible'] == 1;
-//            $title .= ' (' . ($isVisible ? t('Visible') : t('Hidden')) . ')';
             ?>
             <li>
                 <?php
@@ -45,7 +44,7 @@
                     'status_show_id' => $statusShowId
                 );
                 ?>
-                <?= $this->url->icon('folder', t('Status') . ': ' . t($title), 'DashboardController', 'status', $parameters) ?>
+                <?= $this->url->icon('folder', t('Status') . ': ' . $title, 'DashboardController', 'status', $parameters) ?>
             </li>
         <?php endforeach; ?>
     </ul>

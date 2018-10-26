@@ -1,31 +1,25 @@
-Project status and visibility
-=============================
+# Project status and visibility
 
-Features
---------
+**_Versioning for this package follows http://semver.org/. Backwards compatibility might break on upgrade to major versions._**
+
+Requires Kanboard ^1.2.6
+
+## Features
 - Add status to your project.
 - Add color to status.
 - Add visibility to status.
 - View projects by status.
 - Hide projects by status.
 - Hide individual projects.
-- Change title of task colors.
-- Limit task colors.
 
-Author
-------
-- CoRex
-- License MIT
+## Installation
+You have the choice between 3 methods:
 
-Requirements
-------------
-- Kanboard >= 1.1.1
+### Install via composer (recommended)
+Execute "composer require corex/kanboard-crproject" in kanboard-path.
 
-Installation
-------------
-You have the choice between 2 methods:
+### Download
+Download the zip file and decompress everything under the directory `plugins/CRProject`.
 
-1. Download the zip file and decompress everything under the directory `plugins/CRProject`
-2. Clone this repository into the folder `plugins/CRProject`
-
-Note: Plugin folder is case-sensitive.
+### Clone
+Clone this repository into the folder `plugins/CRProject`

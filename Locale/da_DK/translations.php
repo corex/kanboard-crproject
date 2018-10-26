@@ -22,6 +22,8 @@ return array(
     'Remove default' => 'Fjern standard',
     'Show projects with no status or hidden' => 'Vis projekter uden status eller skjult',
     'Edit project' => 'Ret projekt',
-    'Task colors' => 'Opgave farver',
-    'Add new task color' => 'Ny opgave farve'
+    'Number of columns' => 'Antal kolonner',
+    'Default frontpage' => 'Standard forside',
+    'Plugin project board' => 'Plugin projekt tavle',
+    'Kanboard dashboard' => 'Kanboard instrumentbræt'
 );
