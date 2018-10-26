@@ -11,6 +11,11 @@ Requires Kanboard ^1.2.6
 - View projects by status.
 - Hide projects by status.
 - Hide individual projects.
+- Set default frontpage to project board.
+
+
+## Settings
+Settings can be found under application settings.
 
 ## Installation
 You have the choice between 3 methods:
