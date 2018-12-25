@@ -122,6 +122,6 @@ class Plugin extends Base
      */
     public function getPluginHomepage()
     {
-        return 'https://github.com/corex/kanboard-plugin-crproject';
+        return 'https://github.com/corex/kanboard-crproject';
     }
 }
