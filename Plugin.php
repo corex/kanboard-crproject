@@ -38,6 +38,12 @@ class Plugin extends Base
             $isDefaultDashboard = $configModel->get('crproject_default_dashboard') == 1;
             if ($isDefaultDashboard) {
                 $request = Factory::request();
+
+                // If api call, do not redirect.
+                if ($request->uri() == '/jsonrpc.php') {
+                    return;
+                }
+
                 $controller = $request->controller();
                 $action = $request->action();
                 $plugin = $request->plugin();
