@@ -4,7 +4,7 @@ namespace Kanboard\Plugin\CRProject\Schema;
 
 use PDO;
 
-const VERSION = 1;
+const VERSION = 2;
 
 function version_1(PDO $pdo)
 {
@@ -21,6 +21,7 @@ function version_1(PDO $pdo)
         "id" SERIAL PRIMARY KEY,
         "project_id" INTEGER NOT NULL,
         "status_id" INTEGER NOT NULL DEFAULT "0",
-        "is_hidden" INTEGER NOT NULL DEFAULT "0"
+        "is_hidden" INTEGER NOT NULL DEFAULT "0",
+        "is_focused" INTEGER NOT NULL DEFAULT "0"
     )');
 }

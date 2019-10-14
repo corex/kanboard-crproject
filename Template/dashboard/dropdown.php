@@ -7,24 +7,33 @@
             <?php
             $isHidden = $projectStatus !== null ? intval($projectStatus['is_hidden']) == 1 : false;
             $title = $isHidden ? t('Show') : t('Hide');
-            $parameters = array(
-                'plugin' => 'CRProject',
-                'id' => $id,
-                'isHidden' => intval(!$isHidden),
-                'status_show_id' => $statusShowId
-            );
+            $parameters = array('plugin' => 'CRProject', 'project_id' => $id, 'status_show_id' => $statusShowId);
             ?>
             <?= $this->url->icon('eye', t($title), 'DashboardController', 'visibility', $parameters) ?>
         </li>
         <li>
-            <?= $this->url->icon('cog', t('Edit project'), 'ProjectEditController', 'show', array('project_id' => $project['id'])) ?>
+            <?= $this->url->icon('cog', t('Edit project'), 'ProjectEditController', 'show',
+                array('project_id' => $project['id'])) ?>
+        </li>
+        <li>
+            <?php
+            $isFocused = $projectStatus !== null ? intval($projectStatus['is_focused']) == 1 : false;
+            $title = $isFocused ? t('Unmark project as focused') : t('Mark project as focused')
+            ?>
+            <?= $this->url->icon(
+                'star',
+                $title,
+                'DashboardController',
+                'focus',
+                array('plugin' => 'CRProject', 'project_id' => $id, 'status_show_id' => $statusShowId)
+            ) ?>
         </li>
         <li>
             <?php
             $parameters = array(
                 'plugin' => 'CRProject',
-                'id' => $id,
-                'statusId' => 0,
+                'project_id' => $id,
+                'status_id' => 0,
                 'status_show_id' => $statusShowId
             );
             ?>
@@ -39,12 +48,13 @@
                 <?php
                 $parameters = array(
                     'plugin' => 'CRProject',
-                    'id' => $id,
-                    'statusId' => $status['id'],
+                    'project_id' => $id,
+                    'status_id' => $status['id'],
                     'status_show_id' => $statusShowId
                 );
                 ?>
-                <?= $this->url->icon('folder', t('Status') . ': ' . $title, 'DashboardController', 'status', $parameters) ?>
+                <?= $this->url->icon('folder', t('Status') . ': ' . $title, 'DashboardController', 'status',
+                    $parameters) ?>
             </li>
         <?php endforeach; ?>
     </ul>

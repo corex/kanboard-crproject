@@ -57,12 +57,17 @@ class DashboardController extends BaseController
      */
     public function visibility()
     {
-        $id = $this->request->getIntegerParam('id');
+        $projectId = $this->request->getIntegerParam('project_id');
         $statusShowId = $this->request->getStringParam('status_show_id', 0);
-        $isHidden = $this->request->getIntegerParam('isHidden');
-        $this->projectHasStatusModel->setVisibility($id, $isHidden);
-        return $this->response->redirect($this->helper->url->to('DashboardController', 'show',
-            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)));
+
+        $isHidden = $this->projectHasStatusModel->getVisibility($projectId);
+        $this->projectHasStatusModel->setVisibility($projectId, !$isHidden);
+
+        return $this->response->redirect($this->helper->url->to(
+            'DashboardController',
+            'show',
+            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)
+        ));
     }
 
     /**
@@ -70,11 +75,32 @@ class DashboardController extends BaseController
      */
     public function status()
     {
-        $id = $this->request->getIntegerParam('id');
+        $projectId = $this->request->getIntegerParam('project_id');
         $statusShowId = $this->request->getStringParam('status_show_id', 0);
-        $statusId = $this->request->getIntegerParam('statusId');
-        $this->projectHasStatusModel->setStatus($id, $statusId);
-        return $this->response->redirect($this->helper->url->to('DashboardController', 'show',
-            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)));
+        $statusId = $this->request->getIntegerParam('status_id');
+        $this->projectHasStatusModel->setStatus($projectId, $statusId);
+        return $this->response->redirect($this->helper->url->to(
+            'DashboardController',
+            'show',
+            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)
+        ));
+    }
+
+    /**
+     * Focus.
+     */
+    public function focus()
+    {
+        $projectId = $this->request->getIntegerParam('project_id');
+        $statusShowId = $this->request->getStringParam('status_show_id', 0);
+
+        $isFocused = $this->projectHasStatusModel->getFocused($projectId);
+        $this->projectHasStatusModel->setFocused($projectId, !$isFocused);
+
+        return $this->response->redirect($this->helper->url->to(
+            'DashboardController',
+            'show',
+            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)
+        ));
     }
 }

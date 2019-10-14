@@ -92,7 +92,8 @@ class ProjectHasStatusModel extends Base
                 if ($statusId === null || $projectId === null) {
                     continue;
                 }
-                if (array_key_exists($statusId, $result) && !isset($result[$statusId]) && !is_array($result[$statusId])) {
+                if (array_key_exists($statusId,
+                        $result) && !isset($result[$statusId]) && !is_array($result[$statusId])) {
                     $result[$statusId] = [];
                 }
                 $result[$statusId][] = $projectId;
@@ -114,14 +115,47 @@ class ProjectHasStatusModel extends Base
     }
 
     /**
+     * Get visibility.
+     *
+     * @param int $projectId
+     * @return bool
+     */
+    public function getVisibility($projectId)
+    {
+        return intval($this->getFieldValue($projectId, 'is_hidden')) == 1;
+    }
+
+    /**
      * Set visibility.
      *
      * @param integer $projectId
-     * @param integer $isHidden
+     * @param bool $isHidden
      */
     public function setVisibility($projectId, $isHidden)
     {
-        $this->setFieldValue($projectId, 'is_hidden', $isHidden);
+        $this->setFieldValue($projectId, 'is_hidden', intval($isHidden));
+    }
+
+    /**
+     * Get focused.
+     *
+     * @param int $projectId
+     * @return bool
+     */
+    public function getFocused($projectId)
+    {
+        return intval($this->getFieldValue($projectId, 'is_focused')) == 1;
+    }
+
+    /**
+     * Set focused.
+     *
+     * @param int $projectId
+     * @param bool $isFocused
+     */
+    public function setFocused($projectId, $isFocused)
+    {
+        $this->setFieldValue($projectId, 'is_focused', intval($isFocused));
     }
 
     /**
@@ -183,5 +217,20 @@ class ProjectHasStatusModel extends Base
             $query->eq('id', $row['id']);
         }
         $query->save($values);
+    }
+
+    /**
+     * Get field value.
+     *
+     * @param int $projectId
+     * @param string $field
+     * @param mixed|null $default
+     * @return mixed|null
+     */
+    private function getFieldValue($projectId, $field, $default = null)
+    {
+        $row = $this->getByProjectId($projectId);
+        $value = isset($row[$field]) ? $row[$field] : $default;
+        return $value;
     }
 }

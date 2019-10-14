@@ -19,6 +19,9 @@ class Plugin extends Base
         // Setup routes.
         $this->route->addRoute('/crproject/dashboard', 'DashboardController', 'show', 'CRProject');
         $this->route->addRoute('/crproject/dashboard/:status_show_id', 'DashboardController', 'show', 'CRProject');
+        $this->route->addRoute('/crproject/dashboard/visibility/:project_id/:status_show_id', 'DashboardController', 'visibility', 'CRProject');
+        $this->route->addRoute('/crproject/dashboard/status/:project_id/:status_id/:status_show_id', 'DashboardController', 'status', 'CRProject');
+        $this->route->addRoute('/crproject/dashboard/focus/:project_id/:status_show_id', 'DashboardController', 'focus', 'CRProject');
         $this->route->addRoute('/crproject/status', 'ConfigStatusController', 'show', 'CRProject');
 
         // Setup templates.

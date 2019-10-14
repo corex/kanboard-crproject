@@ -25,5 +25,7 @@ return array(
     'Number of columns' => 'Antal kolonner',
     'Default frontpage' => 'Standard forside',
     'Plugin project board' => 'Plugin projekt tavle',
-    'Kanboard dashboard' => 'Kanboard instrumentbræt'
+    'Kanboard dashboard' => 'Kanboard instrumentbræt',
+    'Mark project as focused' => 'Marker projektet som fokuseret',
+    'Unmark project as focused' => 'Fjern markering af projektet som fokuseret'
 );

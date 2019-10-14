@@ -149,6 +149,7 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
 
                         // Get project status.
                         $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
+                        $isFocused = $projectStatus !== null ? intval($projectStatus['is_focused']) == 1 : false;
                         ?>
 
                         <!-- Show dropdown. -->
@@ -173,7 +174,7 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                                 false,
                                 '',
                                 $project['description']
-                            ) ?>
+                            ) ?> <?php if ($isFocused): ?><i style="color: yellow;" class="fa fa-fw fa-star" ></i><?php endif; ?>
                             </span>
                         </div>
                         <br>

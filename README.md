@@ -5,6 +5,7 @@
 Requires Kanboard ^1.2.6
 
 ## Features
+- Show all projects on project board.
 - Add status to your project.
 - Add color to status.
 - Add visibility to status.
@@ -12,6 +13,7 @@ Requires Kanboard ^1.2.6
 - Hide projects by status.
 - Hide individual projects.
 - Set default frontpage to project board.
+- Mark/Unmark project as focused (starred).
 
 
 ## Settings
