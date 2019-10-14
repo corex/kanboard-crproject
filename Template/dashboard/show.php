@@ -60,6 +60,7 @@ $widgetHelper = Factory::widgetHelper();
                         <?= $this->render('CRProject:dashboard/dropdown', array(
                             'id' => $project['id'],
                             'statuses' => $statuses,
+                            'platforms' => $platforms,
                             'projectStatus' => $projectStatus,
                             'project' => $project,
                             'statusShowId' => $statusShowId
@@ -150,6 +151,8 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                         // Get project status.
                         $projectStatus = isset($projectStatuses[$projectId]) ? $projectStatuses[$projectId] : null;
                         $isFocused = $projectStatus !== null ? intval($projectStatus['is_focused']) == 1 : false;
+                        $platformId = isset($projectStatus['platform_id']) ? intval($projectStatus['platform_id']) : 0;
+                        $platform = isset($platformsAsOptions[$platformId]) ? $platformsAsOptions[$platformId] : null;
                         ?>
 
                         <!-- Show dropdown. -->
@@ -157,6 +160,7 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                             <?= $this->render('CRProject:dashboard/dropdown', array(
                                 'id' => $project['id'],
                                 'statuses' => $statuses,
+                                'platforms' => $platforms,
                                 'projectStatus' => $projectStatus,
                                 'project' => $project,
                                 'statusShowId' => $statusShowId
@@ -175,6 +179,9 @@ $iconEye = '<i class="fa fa-fw fa-eye"></i>';
                                 '',
                                 $project['description']
                             ) ?> <?php if ($isFocused): ?><i style="color: yellow;" class="fa fa-fw fa-star" ></i><?php endif; ?>
+                                <?php if ($platform != null): ?>
+                                    <?= $widgetHelper->label($platform['color_id'], $platform['title']) ?>
+                                <?php endif; ?>
                             </span>
                         </div>
                         <br>

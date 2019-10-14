@@ -57,5 +57,33 @@
                     $parameters) ?>
             </li>
         <?php endforeach; ?>
+        <li>
+            <?php
+            $parameters = array(
+                'plugin' => 'CRProject',
+                'project_id' => $id,
+                'platform_id' => 0,
+                'status_show_id' => $statusShowId
+            );
+            ?>
+            <?= $this->url->icon('folder', t('Platform: None'), 'DashboardController', 'platform', $parameters) ?>
+        </li>
+        <?php foreach ($platforms as $platform): ?>
+            <?php
+            $title = $platform['title'];
+            ?>
+            <li>
+                <?php
+                $parameters = array(
+                    'plugin' => 'CRProject',
+                    'project_id' => $id,
+                    'platform_id' => $platform['id'],
+                    'status_show_id' => $statusShowId
+                );
+                ?>
+                <?= $this->url->icon('server', t('Platform') . ': ' . $title, 'DashboardController', 'platform',
+                    $parameters) ?>
+            </li>
+        <?php endforeach; ?>
     </ul>
 </div>

@@ -35,6 +35,8 @@ class DashboardController extends BaseController
         $projects = $query->findAll();
 
         $statuses = $this->projectStatusModel->getAll();
+        $platforms = $this->projectPlatformModel->getAll();
+        $platformsAsOptions = Arr::toKey($platforms, 'id');
 
         $projectIds = $this->projectHasStatusModel->getProjectIdsByStatusId($statusShowId);
         $projectIdsByStatusIds = $this->projectHasStatusModel->getProjectIdsByStatusIds(false);
@@ -44,6 +46,8 @@ class DashboardController extends BaseController
             'projectStatuses' => $projectStatuses,
             'projects' => $projects,
             'statuses' => $statuses,
+            'platforms' => $platforms,
+            'platformsAsOptions' => $platformsAsOptions,
             'projectIds' => $projectIds,
             'projectIdsByStatusIds' => $projectIdsByStatusIds,
             'statusShowId' => $statusShowId,
@@ -97,6 +101,22 @@ class DashboardController extends BaseController
         $isFocused = $this->projectHasStatusModel->getFocused($projectId);
         $this->projectHasStatusModel->setFocused($projectId, !$isFocused);
 
+        return $this->response->redirect($this->helper->url->to(
+            'DashboardController',
+            'show',
+            array('plugin' => 'CRProject', 'status_show_id' => $statusShowId)
+        ));
+    }
+
+    /**
+     * Platform.
+     */
+    public function platform()
+    {
+        $projectId = $this->request->getIntegerParam('project_id');
+        $statusShowId = $this->request->getStringParam('status_show_id', 0);
+        $platformId = $this->request->getIntegerParam('platform_id');
+        $this->projectHasStatusModel->setPlatform($projectId, $platformId);
         return $this->response->redirect($this->helper->url->to(
             'DashboardController',
             'show',

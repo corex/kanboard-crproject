@@ -115,6 +115,17 @@ class ProjectHasStatusModel extends Base
     }
 
     /**
+     * Set platform.
+     *
+     * @param integer $projectId
+     * @param integer $platformId
+     */
+    public function setPlatform($projectId, $platformId)
+    {
+        $this->setFieldValue($projectId, 'platform_id', $platformId);
+    }
+
+    /**
      * Get visibility.
      *
      * @param int $projectId
@@ -170,6 +181,17 @@ class ProjectHasStatusModel extends Base
     }
 
     /**
+     * Platform in use.
+     *
+     * @param int $platformId
+     * @return bool
+     */
+    public function platformInUse($platformId)
+    {
+        return $this->db->table(self::TABLE)->eq('platform_id', $platformId)->count() > 0;
+    }
+
+    /**
      * Get all status ids in use.
      *
      * @return array
@@ -198,6 +220,18 @@ class ProjectHasStatusModel extends Base
     {
         return $this->db->table(self::TABLE)
             ->join(ProjectStatusModel::TABLE, 'id', 'status_id')
+            ->findAll();
+    }
+
+    /**
+     * Get all with platform.
+     *
+     * @return array
+     */
+    public function getAllWithPlatform()
+    {
+        return $this->db->table(self::TABLE)
+            ->join(ProjectPlatformModel::TABLE, 'id', 'platform_id')
             ->findAll();
     }
 

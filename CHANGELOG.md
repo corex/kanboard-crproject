@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0
+
+### Added
+- Added option to show platform on project board.
+
 ## 1.1.0
 
 ### Added

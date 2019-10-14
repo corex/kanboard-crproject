@@ -21,8 +21,10 @@ class Plugin extends Base
         $this->route->addRoute('/crproject/dashboard/:status_show_id', 'DashboardController', 'show', 'CRProject');
         $this->route->addRoute('/crproject/dashboard/visibility/:project_id/:status_show_id', 'DashboardController', 'visibility', 'CRProject');
         $this->route->addRoute('/crproject/dashboard/status/:project_id/:status_id/:status_show_id', 'DashboardController', 'status', 'CRProject');
+        $this->route->addRoute('/crproject/dashboard/platform/:project_id/:platform_id/:status_show_id', 'DashboardController', 'platform', 'CRProject');
         $this->route->addRoute('/crproject/dashboard/focus/:project_id/:status_show_id', 'DashboardController', 'focus', 'CRProject');
         $this->route->addRoute('/crproject/status', 'ConfigStatusController', 'show', 'CRProject');
+        $this->route->addRoute('/crproject/platform', 'ConfigPlatformController', 'show', 'CRProject');
 
         // Setup templates.
         $this->template->hook->attach('template:dashboard:page-header:menu', 'CRProject:dashboard/menu');
@@ -79,7 +81,8 @@ class Plugin extends Base
         return array(
             'Plugin\CRProject\Model' => array(
                 'ProjectStatusModel',
-                'ProjectHasStatusModel'
+                'ProjectHasStatusModel',
+                'ProjectPlatformModel'
             ),
         );
     }
