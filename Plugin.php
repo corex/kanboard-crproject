@@ -41,7 +41,7 @@ class Plugin extends Base
 
             // If default dashboard, override uri.
             $isDefaultDashboard = $configModel->get('crproject_default_dashboard') == 1;
-            if ($isDefaultDashboard) {
+            if (ENABLE_URL_REWRITE && $isDefaultDashboard) {
                 $request = Factory::request();
 
                 // If api call, do not redirect.
@@ -124,7 +124,7 @@ class Plugin extends Base
      */
     public function getPluginVersion()
     {
-        return '1.0.0';
+        return '1.2.1';
     }
 
     /**

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1
+
+### Fixed
+- Fixed schema migrations.
+- Added check for ENABLE_URL_REWRITE on setting default frontpage.
+
 ## 1.2.0
 
 ### Added

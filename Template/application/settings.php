@@ -18,7 +18,7 @@ $isDefaultDashboard = $values['crproject_default_dashboard'] == 1;
     <?= $this->form->label(t('Number of columns'), 'crproject_column_count_title') ?>
     <?= $this->form->select('crproject_column_count', $columnCounts, $values, $errors) ?>
 
-    <?= $this->form->label(t('Default frontpage'), 'crproject_default_dashboard_title') ?>
+    <?= $this->form->label(t('Default frontpage (ENABLE_URL_REWRITE must be enabled)'), 'crproject_default_dashboard_title') ?>
     <?= $this->form->select('crproject_default_dashboard', $choices, $values, $errors) ?>
 
 </fieldset>
