@@ -5,15 +5,16 @@
 Requires Kanboard ^1.2.6
 
 ## Features
-- Show all projects on project board.
-- Add status to your project.
-- Add color to status.
-- Add visibility to status.
-- View projects by status.
-- Hide projects by status.
-- Hide individual projects.
-- Set default frontpage to project board.
-- Mark/Unmark project as focused (starred).
+
+- [Show all projects on project board](#show-all-projects-on-project-board).
+- [Add status to your project](#add-status-to-your-project).
+- [Add color to status](#add-color-to-status).
+- [Add visibility to status](#add-visibility-to-status).
+- [View projects by status](#view-projects-by-status).
+- [Hide projects by status](#hide-projects-by-status).
+- [Hide individual projects](#hide-individual-projects).
+- [Set default frontpage to project board](#set-default-frontpage-to-project-board).
+- [Mark/Unmark project as focused](#markunmark-project-as-focused).
 
 
 ## Settings
@@ -27,3 +28,24 @@ Download the zip file and decompress everything under the directory `plugins/CRP
 
 ### Clone
 Clone this repository into the folder `plugins/CRProject`
+
+### Show all projects on project board
+![Projects by 1 column](docs/project-board-1.png)
+
+![Projects by 2 columns](docs/project-board-2.png)
+
+### Add status to your project
+
+### Add color to status
+
+### Add visibility to status
+
+### View projects by status
+
+### Hide projects by status
+
+### Hide individual projects
+
+### Set default frontpage to project board
+
+### Mark/Unmark project as focused
