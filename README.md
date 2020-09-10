@@ -31,7 +31,8 @@ Clone this repository into the folder `plugins/CRProject`
 
 ### Show all projects on project board
 Columns kan be specified under "Application settings".
-![application-settings](#docs/settings-number-of-columns.png)
+
+![application-settings](docs/settings-number-of-columns.png)
 
 Example of project board with 1 column.
 ![Projects by 1 column](docs/project-board-1.png)
