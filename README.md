@@ -35,9 +35,7 @@ Columns kan be specified under "Application settings".
 ![application-settings](docs/settings-number-of-columns.png)
 
 Example of project board with 1 column.
-![Projects by 1 column](docs/project-board-1.png)
 
-Example of project board with 1 column.
 ![Projects by 2 columns](docs/project-board-2.png)
 
 ### Add status to your project
