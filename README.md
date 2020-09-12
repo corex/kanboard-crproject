@@ -31,7 +31,7 @@ Settings can be changed under "Application settings" -> "Project board".
 ![application-settings](docs/application-settings.png)
 
 - "Number of columns" indicates how many columns shown side by side on project board.
-- When clicking on "KB" up en left corner, the standard behaviour is to go to "Dashboard". This behaviour can be changed to "Plugin project board".
+- When clicking on "KB" up in left corner, the standard behaviour is to go to "Dashboard". This behaviour can be changed to "Plugin project board".
 
 ## Project status, platform, focus and visibility
 
@@ -47,6 +47,7 @@ Focus (starred) can be marked through menu.
 ![focus](docs/project-board-menu-focused.png)
 
 Project visibility can be set through menu.
+
 ![visibility](docs/project-board-menu-visibility.png)
 
 Hidden projects can be found under "Show projects....".
