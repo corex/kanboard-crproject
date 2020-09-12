@@ -66,7 +66,7 @@
                 'status_show_id' => $statusShowId
             );
             ?>
-            <?= $this->url->icon('folder', t('Platform: None'), 'DashboardController', 'platform', $parameters) ?>
+            <?= $this->url->icon('server', t('Platform: None'), 'DashboardController', 'platform', $parameters) ?>
         </li>
         <?php foreach ($platforms as $platform): ?>
             <?php
