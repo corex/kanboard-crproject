@@ -31,7 +31,7 @@ Settings can be changed under "Application settings" -> "Project board".
 ![application-settings](docs/application-settings.png)
 
 - "Number of columns" indicates how many columns shown side by side on project board.
-- When clicking on "KB" up en left corner, the standard behaviour is to go to "Dashboard". This behaviour can be changed to go to "Plugin project board".
+- When clicking on "KB" up en left corner, the standard behaviour is to go to "Dashboard". This behaviour can be changed to "Plugin project board".
 
 ## Project status, platform, focus and visibility
 
