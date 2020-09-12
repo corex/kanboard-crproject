@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.2
+
+### Fixed
+- Fixed wrong icon at project board menu icon for platform.
+
+### Changed
+- Updated readme with images.
+
 ## 1.2.1
 
 ### Fixed
