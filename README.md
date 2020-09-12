@@ -55,8 +55,6 @@ Hidden projects can be found under "Show projects....".
 ![hidden-projects](docs/project-board-hidden-projects.png)
 ![hidden-project](docs/project-board-hidden-project.png)
 
-### Examples
-
 Example of project board with 2 columns.
 
 ![Projects by 2 columns](docs/project-board-2.png)
