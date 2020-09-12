@@ -6,50 +6,56 @@ Requires Kanboard ^1.2.6
 
 ## Features
 
-- [Show all projects on project board](#show-all-projects-on-project-board).
-- [Add status to your project](#add-status-to-your-project).
-- [Add color to status](#add-color-to-status).
-- [Add visibility to status](#add-visibility-to-status).
-- [View projects by status](#view-projects-by-status).
-- [Hide projects by status](#hide-projects-by-status).
-- [Hide individual projects](#hide-individual-projects).
-- [Set default frontpage to project board](#set-default-frontpage-to-project-board).
-- [Mark/Unmark project as focused](#markunmark-project-as-focused).
+- Show all projects on project board.
+- Add status to your project.
+- Add color to status.
+- Add visibility to status.
+- View projects by status.
+- Hide projects by status.
+- Hide individual projects.
+- Set default frontpage to project board.
+- Mark/Unmark project as focused.
 
-
-## Settings
-Settings can be found under application settings.
 
 ## Installation
+
 You have the choice of following methods:
 
-### Download
-Download the zip file and decompress everything under the directory `plugins/CRProject`.
+- Download the zip file and decompress everything under the directory `plugins/CRProject`.
+- Clone this repository into the folder `plugins/CRProject`
 
-### Clone
-Clone this repository into the folder `plugins/CRProject`
+## Settings
 
-### Show all projects on project board
-Columns kan be specified under "Application settings".
+Settings can be changed under "Application settings" -> "Project board".
 
-![application-settings](docs/settings-number-of-columns.png)
+![application-settings](docs/application-settings.png)
+
+- "Number of columns" indicates how many columns shown side by side on project board.
+- When clicking on "KB" up en left corner, the standard behaviour is to go to "Dashboard". This behaviour can be changed to go to "Plugin project board".
+
+## Project status, platform, focus and visibility
+
+Status can be maintained in settings under ""Project status". Properties are "Title", "Description", "Color" and "Visible".
+
+![status](docs/project-board-menu-status.png)
+
+Platform can be maintained in settings under "Project platform". Properties are "Title" and "Color".
+
+![platform](docs/project-board-menu-platform.png)
+
+Focus (starred) can be marked through menu.
+![focus](docs/project-board-menu-focused.png)
+
+Project visibility can be set through menu.
+![visibility](docs/project-board-menu-visibility.png)
+
+Hidden projects can be found under "Show projects....".
+
+![hidden-projects](docs/project-board-hidden-projects.png)
+![hidden-project](docs/project-board-hidden-project.png)
+
+### Examples
 
 Example of project board with 2 columns.
 
 ![Projects by 2 columns](docs/project-board-2.png)
-
-### Add status to your project
-
-### Add color to status
-
-### Add visibility to status
-
-### View projects by status
-
-### Hide projects by status
-
-### Hide individual projects
-
-### Set default frontpage to project board
-
-### Mark/Unmark project as focused
